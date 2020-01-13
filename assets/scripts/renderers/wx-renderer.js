@@ -1,6 +1,5 @@
 let WxRenderer = function (opts) {
   this.opts = opts;
-  let ENV_USE_REFERENCES = true;
   let ENV_STRETCH_IMAGE = true;
 
   let footnotes = [];
@@ -92,13 +91,12 @@ let WxRenderer = function (opts) {
 
   this.hasFootnotes = () => footnotes.length !== 0;
 
-  this.getRenderer = () => {
+  this.getRenderer = (status) => {
     footnotes = [];
     footnoteIndex = 0;
 
     styleMapping = this.buildTheme(this.opts.theme);
     let renderer = new marked.Renderer();
-    FuriganaMD.register(renderer);
 
     renderer.heading = (text, level) => {
       switch (level) {
@@ -173,20 +171,20 @@ let WxRenderer = function (opts) {
       } else if (href === text) {
         return text;
       } else {
-        if (ENV_USE_REFERENCES) {
+        if (status) {
           let ref = addFootnote(title || text, href);
           return `<span ${getStyles('link')}>${text}<sup>[${ref}]</sup></span>`;
         } else {
-          return `<a href="${href}" title="${(title || text)}" ${getStyles('link')}>${text}</a>`;
+          return text;
         }
       }
     };
     renderer.strong = text => `<strong ${getStyles('strong')}>${text}</strong>`;
     renderer.em = text => `<p ${getStyles('p', ';font-style: italic;')}>${text}</p>`;
-    renderer.table = (header, body) => `<table class="preview-table"><thead ${getStyles('thead')}>${header}</thead><tbody>${body}</tbody></table>`;
+    renderer.table = (header, body) => `<section style="padding:0 8px;"><table class="preview-table"><thead ${getStyles('thead')}>${header}</thead><tbody>${body}</tbody></table></section>`;
+    // renderer.tablerow = (text) => `<tr style="">${text}</tr>`;
     renderer.tablecell = (text, flags) => `<td ${getStyles('td')}>${text}</td>`;
     renderer.hr = () => `<hr style="border-style: solid;border-width: 1px 0 0;border-color: rgba(0,0,0,0.1);-webkit-transform-origin: 0 0;-webkit-transform: scale(1, 0.5);transform-origin: 0 0;transform: scale(1, 0.5);">`;
-
     return renderer;
   }
 };

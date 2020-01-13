@@ -16,18 +16,18 @@ let default_theme = {
             'display': 'table',
             'margin': '2em auto 1em',
             'padding': '0 1em',
-            'border-bottom': '2px solid rgba(255, 95, 46, 0.9)'
+            'border-bottom': '2px solid rgba(0, 152, 116, 0.9)'
         },
 
         // 二级标题样式
         h2: {
-            'font-size': '1.1em',
+            'font-size': '1.2em',
             'text-align': 'center',
             'font-weight': 'bold',
             'display': 'table',
             'margin': '4em auto 2em',
             'padding': '0 0.2em',
-            'background': 'rgba(255, 95, 46, 0.9)',
+            'background': 'rgba(0, 152, 116, 0.9)',
             'color': '#fff'
         },
 
@@ -38,7 +38,7 @@ let default_theme = {
             'margin': '2em 8px 0.75em 0',
             'line-height': '1.2',
             'padding-left': '8px',
-            'border-left': '3px solid rgba(255, 95, 46, 0.9)'
+            'border-left': '3px solid rgba(0, 152, 116, 0.9)'
         },
 
         // 四级标题样式
@@ -144,7 +144,7 @@ let default_theme = {
 
         // 字体加粗样式
         strong: {
-            'color': 'rgba(255, 95, 46, 0.9)',
+            'color': 'rgba(15, 76, 129, 0.9)',
             'font-weight': 'bold',
         },
 
@@ -155,11 +155,11 @@ let default_theme = {
         },
 
         thead: {
-            'background': 'rgba(0, 0, 0, 0.05)'
+            'background': 'rgba(0, 0, 0, 0.05)',
+            'font-weight': 'bold'
         },
 
         td: {
-            'font-size': '80%',
             'border': '1px solid #dfdfdf',
             'padding': '0.25em 0.5em'
         },
@@ -167,7 +167,7 @@ let default_theme = {
         footnote: {
             'font-size': '12px'
         },
-        
+
         figcaption: {
             'text-align': 'center',
             'color': '#888',
